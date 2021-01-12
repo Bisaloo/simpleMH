@@ -1,0 +1,23 @@
+Package: simpleMH
+Title: Simple Metropolis-Hastings MCMC Algorithm
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Hugo",
+           family = "Gruson",
+           role = c("aut", "cre", "cph"),
+           email = "hugo.gruson+R@normalesup.org",
+           comment = c(ORCID = "0000-0002-4094-1476"))
+Description: This package offers a very simple interface to use the 
+    Metropolis-Hastings Monte Carlo Markov Chain algorithm. It is suitable
+    for teaching and testing purposes. 
+Imports:
+    mvtnorm
+Suggests:
+    coda
+License: GPL-3
+Config/testthat/edition: 3
+Encoding: UTF-8
+Language: en-GB
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
