@@ -50,6 +50,20 @@ simpleMH <- function(f, inits, theta.cov, max.iter, ...) {
 
     }
 
-    return(list(samples = coda::as.mcmc(theta_samples), log.p = log_p))
+    res <- list(samples = theta_samples, log.p = log_p)
 
-  }
+    if (coda) {
+      if (!requireNamespace("coda", quietly = TRUE)) {
+        stop(
+          "Package 'coda' needed for to create coda objects. ",
+          "Please install it or use `coda = TRUE`.",
+          call. = FALSE
+        )
+      }
+
+      res$samples <- coda::as.mcmc(res$samples)
+    }
+
+    return(res)
+
+}
