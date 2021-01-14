@@ -112,7 +112,7 @@
     <p>Simple Metropolis-Hastings MCMC</p>
     </div>
 
-    <pre class="usage"><span class='fu'>simpleMH</span><span class='op'>(</span><span class='va'>f</span>, <span class='va'>inits</span>, <span class='va'>theta.cov</span>, <span class='va'>max.iter</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>simpleMH</span><span class='op'>(</span><span class='va'>f</span>, <span class='va'>inits</span>, <span class='va'>theta.cov</span>, <span class='va'>max.iter</span>, coda <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -134,6 +134,11 @@ estimate</p></td>
     <tr>
       <th>max.iter</th>
       <td><p>maximum number of function evaluations</p></td>
+    </tr>
+    <tr>
+      <th>coda</th>
+      <td><p>logical. Should the samples be returned as <a href='https://rdrr.io/pkg/coda/man/mcmc.html'>coda::mcmc</a>
+object? (defaults to <code>FALSE</code>)</p></td>
     </tr>
     <tr>
       <th>...</th>
