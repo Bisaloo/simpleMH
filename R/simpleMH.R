@@ -32,6 +32,7 @@ simpleMH <- function(f, inits, theta.cov, max.iter, coda = FALSE, ...) {
     for (m in 2:max.iter) {
 
       theta_new <- rmvnorm(n = 1, mean = theta_now, sigma = theta.cov)
+      names(theta_new) <- names(inits)
 
       p_theta <- f(theta_new, ...)
 
@@ -50,6 +51,12 @@ simpleMH <- function(f, inits, theta.cov, max.iter, coda = FALSE, ...) {
       theta_samples[m, ] <- theta_now
       log_p[m] <- p_theta_now
 
+    }
+
+    if (is.null(names(inits))) {
+      colnames(theta_samples) <- paste0("para_", seq_along(inits))
+    } else {
+      colnames(theta_samples) <- names(inits)
     }
 
     res <- list(samples = theta_samples, log.p = log_p)

@@ -13,7 +13,9 @@ Description: This package offers a very simple interface to use the
 Imports:
     mvtnorm
 Suggests:
-    coda
+    coda,
+    mockery,
+    testthat (>= 3.0.0)
 License: GPL-3
 Config/testthat/edition: 3
 Encoding: UTF-8
