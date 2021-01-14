@@ -4,6 +4,8 @@
 #' @param inits numeric vector with the initial values for the parameters to
 #'   estimate
 #' @param theta.cov covariance matrix of the parameters to estimate.
+#' @param coda logical. Should the samples be returned as [coda::mcmc]
+#'   object? (defaults to `FALSE`)
 #'
 #' @inherit mcmcensemble::MCMCEnsemble return
 #'
@@ -11,7 +13,7 @@
 #' @importFrom stats runif
 #'
 #' @export
-simpleMH <- function(f, inits, theta.cov, max.iter, ...) {
+simpleMH <- function(f, inits, theta.cov, max.iter, coda = FALSE, ...) {
 
     theta_samples <- matrix(NA_real_, nrow = max.iter, ncol = length(inits))
     log_p <- rep_len(NA_real_, max.iter)

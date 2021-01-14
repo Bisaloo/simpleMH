@@ -4,7 +4,7 @@
 \alias{simpleMH}
 \title{Simple Metropolis-Hastings MCMC}
 \usage{
-simpleMH(f, inits, theta.cov, max.iter, ...)
+simpleMH(f, inits, theta.cov, max.iter, coda = FALSE, ...)
 }
 \arguments{
 \item{f}{function that returns a single scalar value proportional to the log
@@ -16,6 +16,9 @@ estimate}
 \item{theta.cov}{covariance matrix of the parameters to estimate.}
 
 \item{max.iter}{maximum number of function evaluations}
+
+\item{coda}{logical. Should the samples be returned as \link[coda:mcmc]{coda::mcmc}
+object? (defaults to \code{FALSE})}
 
 \item{...}{further arguments passed to \code{f}}
 }
