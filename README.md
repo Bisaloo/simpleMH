@@ -7,6 +7,8 @@
 
 [![Lifecycle:
 maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![Codecov test
+coverage](https://codecov.io/gh/Bisaloo/simpleMH/branch/main/graph/badge.svg)](https://codecov.io/gh/Bisaloo/simpleMH?branch=main)
 <!-- badges: end -->
 
 This package offers a very simple interface to use the
