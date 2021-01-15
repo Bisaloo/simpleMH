@@ -9,6 +9,14 @@
 #'
 #' @inherit mcmcensemble::MCMCEnsemble return
 #'
+#' @examples
+#' p.log <- function(x) {
+#' B <- 0.03
+#' return(-x[1]^2/200 - 1/2*(x[2]+B*x[1]^2-100*B)^2)
+#' }
+#'
+#' simpleMH(p.log, inits=c(0, 0), theta.cov = diag(2), max.iter=3000)
+#'
 #' @importFrom mvtnorm rmvnorm
 #' @importFrom stats runif
 #'
