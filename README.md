@@ -43,19 +43,27 @@ p.log <- function(x) {
 res <- simpleMH(
   p.log,
   inits = c(0, 0),
-  theta.cov = diag(1, 2, 2),
-  max.iter = 5000
+  theta.cov = diag(2),
+  max.iter = 5000,
+  coda = TRUE # to be able to have nice plots and diagnostics with the coda pkg
 )
 ```
 
-``` r
-plot(res$samples)
-```
-
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+Here is the resulting sampling landscape of `p.log()`:
 
 ``` r
 plot(as.data.frame(res$samples))
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+<img src="man/figures/README-sampling-landscape-1.png" width="100%" />
+
+We can then use the [coda
+package](https://cran.r-project.org/package=coda) to post-process the
+chain (burn-in, thinning, etc.), plot the trace and density, or compute
+convergence diagnostics:
+
+``` r
+plot(res$samples)
+```
+
+<img src="man/figures/README-coda-plots-1.png" width="100%" />
