@@ -90,15 +90,18 @@
 <span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/simpleMH.html">simpleMH</a></span><span class="op">(</span>
   <span class="va">p.log</span>,
   inits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>,
-  theta.cov <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span>,
-  max.iter <span class="op">=</span> <span class="fl">5000</span>
+  theta.cov <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>,
+  max.iter <span class="op">=</span> <span class="fl">5000</span>,
+  coda <span class="op">=</span> <span class="cn">TRUE</span> <span class="co"># to be able to have nice plots and diagnostics with the coda pkg</span>
 <span class="op">)</span></code></pre></div>
+<p>Here is the resulting sampling landscape of <code>p.log()</code>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">samples</span><span class="op">)</span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-3-1.png" width="100%"></p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">samples</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-4-1.png" width="100%"></p>
+<p><img src="reference/figures/README-sampling-landscape-1.png" width="100%"></p>
+<p>We can then use the <a href="https://cran.r-project.org/package=coda">coda package</a> to post-process the chain (burn-in, thinning, etc.), plot the trace and density, or compute convergence diagnostics:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">samples</span><span class="op">)</span></code></pre></div>
+<p><img src="reference/figures/README-coda-plots-1.png" width="100%"></p>
 </div>
 </div>
   </div>
