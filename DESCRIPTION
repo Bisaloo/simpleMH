@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre", "cph"),
            email = "hugo.gruson+R@normalesup.org",
            comment = c(ORCID = "0000-0002-4094-1476"))
-Description: This package offers a very simple interface to use the 
+Description: This package offers a very bare-bones interface to use the 
     Metropolis-Hastings Monte Carlo Markov Chain algorithm. It is suitable
     for teaching and testing purposes. 
 Imports:
