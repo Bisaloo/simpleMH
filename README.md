@@ -37,8 +37,8 @@ library(simpleMH)
 
 ## a log-pdf to sample from
 p.log <- function(x) {
-    B <- 0.03                              # controls 'bananacity'
-    -x[1]^2/200 - 1/2*(x[2]+B*x[1]^2-100*B)^2
+  B <- 0.03                              # controls 'bananacity'
+  -x[1]^2/200 - 1/2*(x[2]+B*x[1]^2-100*B)^2
 }
 
 res <- simpleMH(
