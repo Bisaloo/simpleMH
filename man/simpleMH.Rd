@@ -26,19 +26,28 @@ object? (defaults to \code{FALSE})}
 \itemize{
 \item if \code{coda = FALSE} a list with:
 \itemize{
-\item \emph{samples}: A three dimensional array of samples with dimensions \code{walker}
-x \code{generation} x \code{parameter}
-\item \emph{log.p}: A matrix with the log density evaluate for each walker at each
+\item \emph{samples}: A two dimensional array of samples with dimensions
+\code{generation} x \code{parameter}
+\item \emph{log.p}: A numeric vector with the log density evaluate at each
 generation.
 }
 \item if \code{coda = TRUE} a list with:
 \itemize{
-\item \emph{samples}: A object of class \link[coda:mcmc.list]{coda::mcmc.list} containing all samples.
-\item \emph{log.p}: A matrix with the log density evaluate for each walker at each
+\item \emph{samples}: A object of class \link[coda:mcmc]{coda::mcmc} containing all samples.
+\item \emph{log.p}: A numeric vector with the log density evaluate at each
 generation.
 }
 }
 }
 \description{
 Simple Metropolis-Hastings MCMC
+}
+\examples{
+p.log <- function(x) {
+B <- 0.03
+return(-x[1]^2/200 - 1/2*(x[2]+B*x[1]^2-100*B)^2)
+}
+
+simpleMH(p.log, inits=c(0, 0), theta.cov = diag(2), max.iter=3000)
+
 }

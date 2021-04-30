@@ -7,7 +7,16 @@
 #' @param coda logical. Should the samples be returned as [coda::mcmc]
 #'   object? (defaults to `FALSE`)
 #'
-#' @inherit mcmcensemble::MCMCEnsemble return
+#' @return
+#' * if `coda = FALSE` a list with:
+#'   - *samples*: A two dimensional array of samples with dimensions
+#'      `generation` x `parameter`
+#'   - *log.p*: A numeric vector with the log density evaluate at each
+#'      generation.
+#' * if `coda = TRUE` a list with:
+#'   - *samples*: A object of class [coda::mcmc] containing all samples.
+#'   - *log.p*: A numeric vector with the log density evaluate at each
+#'      generation.
 #'
 #' @examples
 #' p.log <- function(x) {
