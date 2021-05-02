@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![Lifecycle:
-maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![R-CMD-check](https://github.com/Bisaloo/simpleMH/workflows/R-CMD-check/badge.svg)](https://github.com/Bisaloo/simpleMH/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/Bisaloo/simpleMH/branch/main/graph/badge.svg)](https://codecov.io/gh/Bisaloo/simpleMH?branch=main)
@@ -15,7 +15,7 @@ coverage](https://codecov.io/gh/Bisaloo/simpleMH/branch/main/graph/badge.svg)](h
 This package offers a very bare-bones interface to use the
 Metropolis-Hastings Monte Carlo Markov Chain algorithm. It is suitable
 for teaching and testing purposes. For more advanced uses, you can check
-out the [mcmcensemble](https://bisaloo.github.io/mcmcensemble) or
+out the [mcmcensemble](https://bisaloo.github.io/mcmcensemble/) or
 [adaptMCMC](https://github.com/scheidan/adaptMCMC) packages, which are
 designed with a very similar interface, but often allow better
 convergence, especially for badly scaled problems or highly correlated
