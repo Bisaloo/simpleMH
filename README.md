@@ -10,6 +10,8 @@ maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lif
 [![R-CMD-check](https://github.com/Bisaloo/simpleMH/workflows/R-CMD-check/badge.svg)](https://github.com/Bisaloo/simpleMH/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/Bisaloo/simpleMH/branch/main/graph/badge.svg)](https://codecov.io/gh/Bisaloo/simpleMH?branch=main)
+[![CRAN
+status](https://www.r-pkg.org/badges/version-ago/simpleMH)](https://CRAN.R-project.org/package=simpleMH)
 <!-- badges: end -->
 
 This package offers a very bare-bones interface to use the
@@ -23,11 +25,17 @@ set of parameters.
 
 ## Installation
 
-You can install the development version from GitHub:
+You can install this package from CRAN:
 
 ``` r
-# install.packages("remotes")
-remotes::install_github("Bisaloo/simpleMH")
+install.packages("simpleMH")
+```
+
+or from my [r-universe](https://bisaloo.r-universe.dev/) (development
+version):
+
+``` r
+install.packages("simpleMH", repos = "https://bisaloo.r-universe.dev")
 ```
 
 ## Example
