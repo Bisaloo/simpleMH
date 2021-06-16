@@ -62,7 +62,14 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/Bisaloo/simpleMH/">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -78,7 +85,7 @@
       <h1 data-toc-skip>Frequently Asked Questions</h1>
             
       
-      
+      <small class="dont-index">Source: <a href="https://github.com/Bisaloo/simpleMH/blob/master/vignettes/FAQ.Rmd"><code>vignettes/FAQ.Rmd</code></a></small>
       <div class="hidden name"><code>FAQ.Rmd</code></div>
 
     </div>
@@ -86,7 +93,7 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">simpleMH</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Bisaloo/simpleMH">simpleMH</a></span><span class="op">)</span></code></pre></div>
 <div id="how-to-restrict-the-possible-parameter-range" class="section level2">
 <h2 class="hasAnchor">
 <a href="#how-to-restrict-the-possible-parameter-range" class="anchor"></a>How to restrict the possible parameter range?</h2>
@@ -122,14 +129,14 @@
 <span class="co">#&gt;    plus standard error of the mean:</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;     Mean     SD Naive SE Time-series SE</span>
-<span class="co">#&gt; a 0.5246 0.2863 0.005227        0.02479</span>
-<span class="co">#&gt; b 0.6809 0.2578 0.004707        0.02607</span>
+<span class="co">#&gt; a 0.4799 0.2906 0.005305        0.02631</span>
+<span class="co">#&gt; b 0.6359 0.2613 0.004771        0.02715</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; 2. Quantiles for each variable:</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;      2.5%    25%    50%    75%  97.5%</span>
-<span class="co">#&gt; a 0.06398 0.2593 0.5266 0.7751 0.9786</span>
-<span class="co">#&gt; b 0.09062 0.4892 0.7744 0.8859 0.9838</span></code></pre></div>
+<span class="co">#&gt; a 0.03059 0.2028 0.4565 0.7669 0.9444</span>
+<span class="co">#&gt; b 0.09960 0.4416 0.6504 0.8959 0.9979</span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">samples</span><span class="op">)</span></code></pre></div>
 <p><img src="FAQ_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
