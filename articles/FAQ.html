@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,23 +33,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">simpleMH</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.0.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -64,7 +60,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/Bisaloo/simpleMH/">
+  <a href="https://github.com/Bisaloo/simpleMH/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -79,13 +75,13 @@
 
       
 
-      </header><script src="FAQ_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Frequently Asked Questions</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/Bisaloo/simpleMH/blob/master/vignettes/FAQ.Rmd"><code>vignettes/FAQ.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/Bisaloo/simpleMH/blob/HEAD/vignettes/FAQ.Rmd" class="external-link"><code>vignettes/FAQ.Rmd</code></a></small>
       <div class="hidden name"><code>FAQ.Rmd</code></div>
 
     </div>
@@ -93,52 +89,54 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Bisaloo/simpleMH">simpleMH</a></span><span class="op">)</span></code></pre></div>
-<div id="how-to-restrict-the-possible-parameter-range" class="section level2">
-<h2 class="hasAnchor">
-<a href="#how-to-restrict-the-possible-parameter-range" class="anchor"></a>How to restrict the possible parameter range?</h2>
-<p>There is no built-in way to define hard limits for the parameter and make sure they never go outside of this range.</p>
-<p>The recommended way to address this issue is to handle these cases in the function <code>f</code> you provide.</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Bisaloo/simpleMH" class="external-link">simpleMH</a></span><span class="op">)</span></span></code></pre></div>
+<div class="section level2">
+<h2 id="how-to-restrict-the-possible-parameter-range">How to restrict the possible parameter range?<a class="anchor" aria-label="anchor" href="#how-to-restrict-the-possible-parameter-range"></a>
+</h2>
+<p>There is no built-in way to define hard limits for the parameter and
+make sure they never go outside of this range.</p>
+<p>The recommended way to address this issue is to handle these cases in
+the function <code>f</code> you provide.</p>
 <p>For example, to keep parameters in the 0-1 range:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">p.log.restricted</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
-  
-  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/any.html">any</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;</span> <span class="fl">0</span>, <span class="va">x</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span><span class="op">)</span>
-  <span class="op">}</span>
-  
-  <span class="va">B</span> <span class="op">&lt;-</span> <span class="fl">0.03</span> <span class="co"># controls 'bananacity'</span>
-  <span class="op">-</span><span class="va">x</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="fl">200</span> <span class="op">-</span> <span class="fl">1</span> <span class="op">/</span> <span class="fl">2</span> <span class="op">*</span> <span class="op">(</span><span class="va">x</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">+</span> <span class="va">B</span> <span class="op">*</span> <span class="va">x</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">^</span><span class="fl">2</span> <span class="op">-</span> <span class="fl">100</span> <span class="op">*</span> <span class="va">B</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span>
-<span class="op">}</span>
-
-<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/simpleMH.html">simpleMH</a></span><span class="op">(</span>
-  <span class="va">p.log.restricted</span>,
-  inits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">0</span>, b <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>,
-  theta.cov <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>,
-  max.iter <span class="op">=</span> <span class="fl">3000</span>,
-  coda <span class="op">=</span> <span class="cn">TRUE</span>
-<span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">samples</span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Iterations = 1:3000</span>
-<span class="co">#&gt; Thinning interval = 1 </span>
-<span class="co">#&gt; Number of chains = 1 </span>
-<span class="co">#&gt; Sample size per chain = 3000 </span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; 1. Empirical mean and standard deviation for each variable,</span>
-<span class="co">#&gt;    plus standard error of the mean:</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     Mean     SD Naive SE Time-series SE</span>
-<span class="co">#&gt; a 0.4799 0.2906 0.005305        0.02631</span>
-<span class="co">#&gt; b 0.6359 0.2613 0.004771        0.02715</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; 2. Quantiles for each variable:</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;      2.5%    25%    50%    75%  97.5%</span>
-<span class="co">#&gt; a 0.03059 0.2028 0.4565 0.7669 0.9444</span>
-<span class="co">#&gt; b 0.09960 0.4416 0.6504 0.8959 0.9979</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">p.log.restricted</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  </span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/any.html" class="external-link">any</a></span><span class="op">(</span><span class="va">x</span> <span class="op">&lt;</span> <span class="fl">0</span>, <span class="va">x</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="op">-</span><span class="cn">Inf</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span>  </span>
+<span>  <span class="va">B</span> <span class="op">&lt;-</span> <span class="fl">0.03</span> <span class="co"># controls 'bananacity'</span></span>
+<span>  <span class="op">-</span><span class="va">x</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="fl">200</span> <span class="op">-</span> <span class="fl">1</span> <span class="op">/</span> <span class="fl">2</span> <span class="op">*</span> <span class="op">(</span><span class="va">x</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">+</span> <span class="va">B</span> <span class="op">*</span> <span class="va">x</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">^</span><span class="fl">2</span> <span class="op">-</span> <span class="fl">100</span> <span class="op">*</span> <span class="va">B</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/simpleMH.html">simpleMH</a></span><span class="op">(</span></span>
+<span>  <span class="va">p.log.restricted</span>,</span>
+<span>  inits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">0</span>, b <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>,</span>
+<span>  theta.cov <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>,</span>
+<span>  max.iter <span class="op">=</span> <span class="fl">3000</span>,</span>
+<span>  coda <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">samples</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Iterations = 1:3000</span></span>
+<span><span class="co">#&gt; Thinning interval = 1 </span></span>
+<span><span class="co">#&gt; Number of chains = 1 </span></span>
+<span><span class="co">#&gt; Sample size per chain = 3000 </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; 1. Empirical mean and standard deviation for each variable,</span></span>
+<span><span class="co">#&gt;    plus standard error of the mean:</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     Mean     SD Naive SE Time-series SE</span></span>
+<span><span class="co">#&gt; a 0.4981 0.3007  0.00549        0.02885</span></span>
+<span><span class="co">#&gt; b 0.6861 0.2289  0.00418        0.02023</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; 2. Quantiles for each variable:</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;      2.5%    25%    50%    75%  97.5%</span></span>
+<span><span class="co">#&gt; a 0.01583 0.2354 0.4463 0.7749 0.9931</span></span>
+<span><span class="co">#&gt; b 0.23041 0.5085 0.7194 0.8799 0.9880</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">samples</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">res</span><span class="op">$</span><span class="va">samples</span><span class="op">)</span></span></code></pre></div>
 <p><img src="FAQ_files/figure-html/unnamed-chunk-3-1.png" width="700"></p>
 </div>
   </div>
@@ -154,11 +152,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Hugo Gruson.</p>
+  <p></p>
+<p>Developed by Hugo Gruson.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
@@ -166,6 +166,8 @@
 
   
 
+
+  
 
   </body>
 </html>
