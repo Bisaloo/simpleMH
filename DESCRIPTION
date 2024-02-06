@@ -1,6 +1,6 @@
 Package: simpleMH
 Title: Simple Metropolis-Hastings MCMC Algorithm
-Version: 0.1.0.9000
+Version: 0.1.1
 Authors@R: 
     person(given = "Hugo",
            family = "Gruson",
