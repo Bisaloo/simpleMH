@@ -1,0 +1,37 @@
+name: SBOM upload
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+
+jobs:
+  SBOM-upload:
+
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: r-lib/actions/setup-r@v2
+      with:
+        use-public-rpsm: true
+    - uses: r-lib/actions/setup-r-dependencies@v2
+      with:
+        packages: |
+          hrbrmstr/sbom
+          uuid
+    - run: |
+        sbom::cran_pkg_sbom("simpleMH") |>
+          writeLines("sbom.json")
+      shell: Rscript {0}
+    - uses: actions/upload-artifact@v3
+      with:
+        name: sbom
+        path: sbom.json
+    - name: SBOM upload
+      uses: advanced-security/spdx-dependency-submission-action@v0.0.1
+      with:
+        filePath: sbom.json
