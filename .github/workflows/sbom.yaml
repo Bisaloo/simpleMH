@@ -27,7 +27,7 @@ jobs:
         sbom::cran_pkg_sbom("simpleMH") |>
           writeLines("sbom.json")
       shell: Rscript {0}
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: sbom
         path: sbom.json
