@@ -20,7 +20,7 @@ jobs:
         use-public-rpsm: true
     - uses: r-lib/actions/setup-r-dependencies@v2
       with:
-        packages: |
+        extra-packages: |
           hrbrmstr/sbom
           uuid
     - run: |
